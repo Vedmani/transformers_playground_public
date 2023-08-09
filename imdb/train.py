@@ -41,12 +41,11 @@ accuracy = evaluate.load("accuracy")
 roc_auc_score = evaluate.load("roc_auc")
 
 
+accuracy = evaluate.load("accuracy")
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     predictions = np.argmax(logits, axis=-1)
-    acc = (accuracy.compute(predictions=predictions, references=labels))['accuracy']
-    roc_auc = (roc_auc_score.compute(predictions=predictions, references=labels))['roc_auc']
-    return {'accuracy': acc, 'roc_auc': roc_auc}
+    return accuracy.compute(predictions=predictions, references=labels)
 
 
 args = get_args()
