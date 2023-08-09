@@ -31,12 +31,12 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     per_device_train_batch_size: int = field(
-        default=32,
+        default=16,
         metadata={'help': 'The batch size per GPU/TPU core/CPU for training.'}
     )
 
     per_device_eval_batch_size: int = field(
-        default=32,
+        default=16,
         metadata={'help': 'The batch size per GPU/TPU core/CPU for evaluation.'}
     )
 
