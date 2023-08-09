@@ -31,12 +31,12 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     per_device_train_batch_size: int = field(
-        default=16,
+        default=32,
         metadata={'help': 'The batch size per GPU/TPU core/CPU for training.'}
     )
 
     per_device_eval_batch_size: int = field(
-        default=16,
+        default=32,
         metadata={'help': 'The batch size per GPU/TPU core/CPU for evaluation.'}
     )
 
@@ -119,12 +119,12 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     logging_strategy: str = field(
-        default='epoch',
+        default='steps',
         metadata={'help': 'The logging strategy to adopt during training.'}
     )
 
     logging_steps: int or float = field(
-        default=10,
+        default=50,
         metadata={'help': 'Log every X updates steps.'}
     )
 
