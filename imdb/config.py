@@ -6,7 +6,7 @@ import torch
 @dataclass
 class MyTrainingArguments(TrainingArguments):
     output_dir: str = field(
-        default='output_new',
+        default='output',
         metadata={'help': 'The output directory where the model predictions and checkpoints will be written.'}
     )
 
