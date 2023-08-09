@@ -41,7 +41,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     learning_rate: float = field(
-        default=0.01,
+        default=5e-4,
         metadata={'help': 'The initial learning rate for Adam.'}
     )
 
