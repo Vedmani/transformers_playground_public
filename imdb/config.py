@@ -109,7 +109,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     auto_find_batch_size: bool = field(
-        default=True, 
+        default=False,
         metadata={'help': 'Whether to find a batch size that will fit into memory automatically.'}
     )
 
