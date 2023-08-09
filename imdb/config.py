@@ -129,7 +129,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     warmup_ratio: float = field(
-        default=0,
+        default=0.3,
         metadata={'help': 'Linear warmup over warmup_steps.'}
     )
 
