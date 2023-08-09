@@ -41,7 +41,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     learning_rate: float = field(
-        default=3e-5,
+        default=0.01,
         metadata={'help': 'The initial learning rate for Adam.'}
     )
 
@@ -64,7 +64,7 @@ class MyTrainingArguments(TrainingArguments):
         metadata={'help': 'The log level to use.'}
     )
     logging_steps: int = field(
-        default=25, 
+        default=25,
         metadata={'help': 'Log every X updates steps.'}
     )
 
@@ -126,6 +126,11 @@ class MyTrainingArguments(TrainingArguments):
     logging_steps: int or float = field(
         default=50,
         metadata={'help': 'Log every X updates steps.'}
+    )
+
+    warmup_ratio: float = field(
+        default=0,
+        metadata={'help': 'Linear warmup over warmup_steps.'}
     )
 
 
