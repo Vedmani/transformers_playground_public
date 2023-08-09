@@ -46,7 +46,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     num_train_epochs: float = field(
-        default=3.0,
+        default=5.0,
         metadata={'help': 'Total number of training epochs to perform.'}
     )
     optim: str = field(
