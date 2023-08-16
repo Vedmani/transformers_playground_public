@@ -37,6 +37,7 @@ model = PeftModel.from_pretrained(model, custom_args.model_save_path)
 
 dataset = get_train_val_dataset()
 print(dataset)
+print("check")
 
 accuracy = evaluate.load("accuracy")
 def compute_metrics(eval_pred):
