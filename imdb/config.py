@@ -142,6 +142,6 @@ class CustomArguments:
 
 
 def get_args():
-    parser = HfArgumentParser(MyTrainingArguments, CustomArguments)
+    parser = HfArgumentParser((MyTrainingArguments, CustomArguments))
     training_args, custom_args = parser.parse_args_into_dataclasses()
     return training_args, custom_args
