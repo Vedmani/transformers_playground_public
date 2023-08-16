@@ -54,4 +54,4 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-trainer.train()
+trainer.evaluate()
