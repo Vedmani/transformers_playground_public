@@ -54,4 +54,4 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 
-trainer.evaluate(eval_dataset = dataset["validation"])
+trainer.evaluate(eval_dataset=dataset["validation"])
