@@ -69,42 +69,42 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     save_strategy: str = field(
-        default='epoch', 
+        default='epoch',
         metadata={'help': 'The checkpoint save strategy to adopt during training.'}
     )
 
     save_total_limit: int = field(
-        default=2, 
+        default=2,
         metadata={'help': 'Limit the total amount of checkpoints. Deletes the older checkpoints.'}
     )
 
     fp16: bool = field(
-        default=torch.cuda.is_available(), 
+        default=torch.cuda.is_available(),
         metadata={'help': 'Whether to use 16-bit (mixed) precision training or not.'}
     )
 
     metric_for_best_model: str = field(
-        default='accuracy', 
+        default='accuracy',
         metadata={'help': 'The metric to use to compare models.'}
     )
 
     greater_is_better: bool = field(
-        default=True, 
+        default=True,
         metadata={'help': 'Whether a high metric value is better or not.'}
     )
 
     group_by_length: bool = field(
-        default=True, 
+        default=True,
         metadata={'help': 'Whether to group samples of similar length together.'}
     )
 
     report_to: str = field(
-        default='wandb', 
+        default='wandb',
         metadata={'help': 'The list of integrations to report the results and logs to.'}
     )
 
     dataloader_pin_memory: bool = field(
-        default=True, 
+        default=True,
         metadata={'help': 'Whether you want to pin memory in data loaders or not.'}
     )
 
@@ -114,7 +114,7 @@ class MyTrainingArguments(TrainingArguments):
     )
 
     load_best_model_at_end: bool = field(
-        default=False, 
+        default=False,
         metadata={'help': 'Whether to load the best model found during training at the end.'}
     )
 
@@ -134,7 +134,14 @@ class MyTrainingArguments(TrainingArguments):
     )
 
 
+@dataclass
+class CustomArguments:
+    model_save_path: str = field(
+        metadata={'help': 'The path to the model checkpoint for evaluation.'}
+    )
+
+
 def get_args():
-    parser = HfArgumentParser(MyTrainingArguments)
-    training_args, = parser.parse_args_into_dataclasses()
-    return training_args
+    parser = HfArgumentParser(MyTrainingArguments, CustomArguments)
+    training_args, custom_args = parser.parse_args_into_dataclasses()
+    return training_args, custom_args
