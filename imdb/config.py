@@ -137,6 +137,7 @@ class MyTrainingArguments(TrainingArguments):
 @dataclass
 class CustomArguments:
     model_save_path: str = field(
+        default='save_model',
         metadata={'help': 'The path to the model checkpoint for evaluation.'}
     )
 
