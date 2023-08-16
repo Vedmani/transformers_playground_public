@@ -59,7 +59,7 @@ trainer = Trainer(
     tokenizer=tok,
     compute_metrics=compute_metrics,
 )
-
+print("Training...")
 trainer.train()
 
 trainer.save_model()
