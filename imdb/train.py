@@ -37,9 +37,6 @@ dataset = tokenize_dataset(dataset, tok)
 model = get_cls_model(model_name_or_path='bert-base-cased', num_classes=2, seed=42)
 model = get_model_peft(model, seed=42)
 
-accuracy = evaluate.load("accuracy")
-roc_auc_score = evaluate.load("roc_auc")
-
 
 accuracy = evaluate.load("accuracy")
 def compute_metrics(eval_pred):
@@ -48,7 +45,7 @@ def compute_metrics(eval_pred):
     return accuracy.compute(predictions=predictions, references=labels)
 
 
-args = get_args()
+args, config = get_args()
 
 trainer = Trainer(
     model=model,
@@ -61,8 +58,9 @@ trainer = Trainer(
 )
 print("Training...")
 trainer.train()
+trainer.push_to_hub()
 
-trainer.save_model()
+trainer.save_model("./model")
 model.save_pretrained(args.output_dir+"/save_model")
 merged_model = model.merge_and_unload()
 merged_model.save_pretrained(args.output_dir+"/merged_model")

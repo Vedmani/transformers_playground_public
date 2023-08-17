@@ -135,7 +135,7 @@ class MyTrainingArguments(TrainingArguments):
 
 
 @dataclass
-class CustomArguments:
+class Config:
     model_save_path: str = field(
         default='save_model',
         metadata={'help': 'The path to the model checkpoint for evaluation.'}
@@ -143,6 +143,6 @@ class CustomArguments:
 
 
 def get_args():
-    parser = HfArgumentParser(MyTrainingArguments)
-    training_args, = parser.parse_args_into_dataclasses()
-    return training_args
+    parser = HfArgumentParser((MyTrainingArguments, Config))
+    training_args, config = parser.parse_args_into_dataclasses()
+    return training_args, config
